@@ -27,35 +27,9 @@ jobs:
 
     - name: Build
       run: go build -v -o main .
-    
-    - name: Commit
-      if: contains(github.ref, 'tags/v')
-      env:
-        TAG: ${{ github.ref }}
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git checkout release
-        git merge -m "Release $TAG" master
 
-    - name: Push
-      if: success()
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: release
-    
-    - name: Create Release
-      if: success()
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        body: |
-          Changes in this Release
-          - First Change
-          - Second Change
-        draft: false
-        prerelease: false
+    - name: Upload
+      uses: actions/upload-artifact@master
+        with:
+          name: release
+          path: .
