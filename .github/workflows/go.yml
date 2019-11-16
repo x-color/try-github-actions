@@ -30,6 +30,6 @@ jobs:
 
     - name: Upload
       uses: actions/upload-artifact@master
-        with:
-          name: release
-          path: .
+      with:
+        name: release
+        path: .
