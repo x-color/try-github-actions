@@ -2,7 +2,7 @@ name: Go
 on:
   push:
     paths:
-      - *.go
+      - '*.go'
 
 jobs:
 
