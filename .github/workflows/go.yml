@@ -1,8 +1,6 @@
 name: Go Test
 on:
   push:
-    tags-ignore:
-      - v*
     paths:
       - '*.go'
 
