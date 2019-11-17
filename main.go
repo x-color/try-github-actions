@@ -5,7 +5,6 @@ import "fmt"
 func main() {
 	fmt.Println(greet("World"))
 	fmt.Println(greet("GitHub"))
-	fmt.Println(greet("GitHub"))
 }
 
 func greet(target string) string {
