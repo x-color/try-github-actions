@@ -1,10 +1,10 @@
 name: Go Test
 on:
   push:
-    tags-ignore:
-      - v*.*.*
     paths:
-      - '*.go'
+      - '**.go'
+    tags-ignore:
+      - 'v*.*.*'
 
 jobs:
   test:
