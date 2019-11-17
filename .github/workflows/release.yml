@@ -20,12 +20,12 @@ jobs:
     - name: Get dependencies
       run: go get -v -t -d ./...
 
-    - name: Test
+    - name: Test code
       run: go test -v .
 
   setup-release:
     name: Setup release
-    needs: test
+    needs: test # This workflow is executed after completed 'test' job
     runs-on: ubuntu-latest
     steps:
     - name: Create release
@@ -39,14 +39,14 @@ jobs:
         draft: true
         prerelease: false
 
-    - name: Get upload url
+    - name: Get url to upload to release from output
       env:
         url: ${{ steps.create_release.outputs.upload_url }}
       run: |
         mkdir artifact
         echo $url > artifact/url.txt
 
-    - name: Upload url
+    - name: Upload artifact to share url with other jobs
       uses: actions/upload-artifact@v1
       with:
         name: artifact
@@ -57,12 +57,12 @@ jobs:
     needs: setup-release
     runs-on: ubuntu-latest
     steps:
-    - name: Download url
+    - name: Download artifact to get url to upload to release
       uses: actions/download-artifact@v1
       with:
         name: artifact
 
-    - name: Get upload url
+    - name: Get url to upload to release from artifact
       id: get_url
       run: |
         url=$(cat artifact/url.txt)
@@ -71,14 +71,14 @@ jobs:
     - name: Check out code into the Go module directory
       uses: actions/checkout@v1
 
-    - name: Pack
+    - name: Pack source code in zip file
       run: |
         mkdir dist
         ls -la
         cp *.go dist/
         zip -j -r release dist
 
-    - name: Upload Release Asset
+    - name: Upload release asset
       uses: actions/upload-release-asset@v1.0.1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -89,7 +89,7 @@ jobs:
         asset_content_type: application/zip
 
   release-pkg:
-    name: Release Package
+    name: Release package
     needs: setup-release
     runs-on: ubuntu-latest
     strategy:
@@ -128,18 +128,18 @@ jobs:
         GOOS=$goos GOARCH=$goarch go build -v -o dist/app .
         zip -j -r release dist
 
-    - name: Download url
+    - name: Download artifact to get url to upload to release
       uses: actions/download-artifact@v1
       with:
         name: artifact
 
-    - name: Get upload url
+    - name: Get url to upload to release from artifact
       id: get_url
       run: |
         url=$(cat artifact/url.txt)
         echo "##[set-output name=upload_url;]$url"
 
-    - name: Upload Release Asset
+    - name: Upload release asset
       uses: actions/upload-release-asset@v1.0.1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
