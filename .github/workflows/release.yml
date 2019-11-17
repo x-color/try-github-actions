@@ -1,4 +1,4 @@
-name: Release
+name: Go Release
 on:
   push:
     tags:
@@ -67,6 +67,9 @@ jobs:
       run: |
         url=$(cat artifact/url.txt)
         echo "##[set-output name=upload_url;]$url"
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v1
 
     - name: Pack
       run: |
