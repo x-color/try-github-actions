@@ -5,8 +5,8 @@ on:
     #  - '**.go'
     tags-ignore:
       - 'v*.*.*'
-    # branches:
-    #   - '*'
+    branches:
+      - '*'
 
 jobs:
   checkout:
