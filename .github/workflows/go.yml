@@ -3,10 +3,8 @@ on:
   push:
     paths:
       - '**.go'
-    tags-ignore:
-      - 'v*.*.*'
-    branches:
-      - '*'
+    branches-ignore:
+      - 'test'
 
 jobs:
   checkout:
