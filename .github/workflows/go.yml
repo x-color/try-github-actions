@@ -5,6 +5,8 @@ on:
       - '**.go'
     branches-ignore:
       - 'test'
+    tags:
+      - '*'
 
 jobs:
   checkout:
