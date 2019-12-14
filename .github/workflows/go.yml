@@ -1,12 +1,12 @@
 name: Go
 on:
   push:
-    paths:
-      - '**.go'
-    branches-ignore:
-      - 'test'
-    tags:
-      - '*'
+    # paths:
+    #  - '**.go'
+    tags-ignore:
+      - 'v*.*.*'
+    # branches:
+    #   - '*'
 
 jobs:
   checkout:
