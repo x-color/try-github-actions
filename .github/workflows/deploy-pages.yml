@@ -1,0 +1,45 @@
+name: github pages
+
+on:
+  push:
+    branches:
+      - vue-deploy-pages
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+
+    - name: Cache dependencies
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: install
+      run: npm ci
+
+    - name: lint
+      run: npm test
+
+    # No test code
+    # - name: test
+    #   run: npm test
+
+    - name: build
+      run: npm run build -- --dest doc
+
+    - name: deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: vue-deploy-pages
+        FOLDER: doc
