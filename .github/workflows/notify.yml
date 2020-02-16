@@ -6,21 +6,30 @@ on:
       - notify-slack
 
 jobs:
-  build-deploy:
+  notify:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v2
 
     - name: exec
-      run: echo 'execute!!'
+      run: | 
+        echo 'execute!!'
+        exit 1
 
-    - name: Slack Notification
-      if: success()
+    - name: Slack Notification Failure
+      if: failure()
       uses: rtCamp/action-slack-notify@v2.0.0
       env:
-        SLACK_CHANNEL: channel_name
-        SLACK_ICON: https://github.com/x-color/try-github-actions/blob/notify-slack/resources/icon.png
+        SLACK_MESSAGE: 'Failure :x:'
+        SLACK_COLOR: '#d9534f'
+        SLACK_TITLE: Failure GitHub Actions
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+
+    - name: Slack Notification Success
+      if: cancelled()
+      uses: rtCamp/action-slack-notify@v2.0.0
+      env:
         SLACK_MESSAGE: 'Success :rocket:'
+        SLACK_COLOR: '#5cb85c'
         SLACK_TITLE: Success GitHub Actions
-        SLACK_USERNAME: Sheeeep
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
