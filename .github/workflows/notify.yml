@@ -19,41 +19,41 @@ jobs:
       uses: pullreminders/slack-action@master
       with:
         args: >
-        {
-          \"channel\":\"CQSASTL14\",
-          \"text\":\"Hello world\",
-          "blocks": [
-            {
-              \"type\": \"section\",
-              \"text\": {
-                \"type\": \"mrkdwn\",
-                \"text\": \":rocket: *You have a new request*\"
-              }
-            },
-            {
-              \"type\": \"section\",
-              \"fields\": [
-                {
+          {
+            \"channel\":\"CQSASTL14\",
+            \"text\":\"Hello world\",
+            "blocks": [
+              {
+                \"type\": \"section\",
+                \"text\": {
                   \"type\": \"mrkdwn\",
-                  \"text\": \"*Type:*\nComputer (laptop)\"
-                },
-                {
-                  \"type\": \"mrkdwn\",
-                  \"text\": \"*When:*\nSubmitted Aut 10\"
-                },
-                {
-                  \"type\": \"mrkdwn\",
-                  \"text\": \"*Last Update:*\nMar 10, 2015 (3 years, 5 months)\"
-                },
-                {
-                  \"type\": \"mrkdwn\",
-                  \"text\": \"*Reason:*\nAll vowel keys aren't working.\"
-                },
-                {
-                  \"type\": \"mrkdwn\",
-                  \"text\": \"*Specs:*\n\\"Cheetah Pro 15\\" - Fast, really fast\\"\"
+                  \"text\": \":rocket: *You have a new request*\"
                 }
-              ]
-            }
-          ]
-        }
+              },
+              {
+                \"type\": \"section\",
+                \"fields\": [
+                  {
+                    \"type\": \"mrkdwn\",
+                    \"text\": \"*Type:*\nComputer (laptop)\"
+                  },
+                  {
+                    \"type\": \"mrkdwn\",
+                    \"text\": \"*When:*\nSubmitted Aut 10\"
+                  },
+                  {
+                    \"type\": \"mrkdwn\",
+                    \"text\": \"*Last Update:*\nMar 10, 2015 (3 years, 5 months)\"
+                  },
+                  {
+                    \"type\": \"mrkdwn\",
+                    \"text\": \"*Reason:*\nAll vowel keys aren't working.\"
+                  },
+                  {
+                    \"type\": \"mrkdwn\",
+                    \"text\": \"*Specs:*\n\\"Cheetah Pro 15\\" - Fast, really fast\\"\"
+                  }
+                ]
+              }
+            ]
+          }
