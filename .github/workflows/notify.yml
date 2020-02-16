@@ -25,7 +25,6 @@ jobs:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
     - name: Slack Notification Success
-      if: cancelled()
       uses: rtCamp/action-slack-notify@v2.0.0
       env:
         SLACK_MESSAGE: 'Success :rocket:'
