@@ -14,7 +14,6 @@ jobs:
     - name: exec
       run: | 
         echo 'execute!!'
-        exit 1
 
     - name: Slack Notification Failure
       if: failure()
