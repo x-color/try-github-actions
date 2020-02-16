@@ -20,8 +20,9 @@ jobs:
       with:
         args: >
           {
+            \"username\": \"Sheep Bot\",
             \"channel\":\"CQSASTL14\",
-            \"text\":\"Hello world\",
+            \"text\":\"Sheep Say < Hello!!\",
             \"blocks\": [
               {
                 \"type\": \"section\",
