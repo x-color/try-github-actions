@@ -15,19 +15,9 @@ jobs:
       run: | 
         echo 'execute!!'
 
-    - name: Slack Notification Failure
-      if: failure()
-      uses: rtCamp/action-slack-notify@v2.0.0
-      env:
-        SLACK_MESSAGE: 'Failure :x:'
-        SLACK_COLOR: '#d9534f'
-        SLACK_TITLE: Failure GitHub Actions
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-
     - name: Slack Notification Success
-      uses: rtCamp/action-slack-notify@v2.0.0
       env:
-        SLACK_MESSAGE: 'Success :rocket:'
-        SLACK_COLOR: '#5cb85c'
-        SLACK_TITLE: Success GitHub Actions
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      uses: pullreminders/slack-action@master
+      with:
+        args: '{\"channel\":\"CQSASTL14\",\"text\":\"Hello world\"}'
