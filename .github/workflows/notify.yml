@@ -22,7 +22,7 @@ jobs:
           {
             \"channel\":\"CQSASTL14\",
             \"text\":\"Hello world\",
-            "blocks": [
+            \"blocks\": [
               {
                 \"type\": \"section\",
                 \"text\": {
@@ -51,7 +51,7 @@ jobs:
                   },
                   {
                     \"type\": \"mrkdwn\",
-                    \"text\": \"*Specs:*\n\\"Cheetah Pro 15\\" - Fast, really fast\\"\"
+                    \"text\": \"*Specs:*\nCheetah Pro 15 - Fast, really fast\"
                   }
                 ]
               }
