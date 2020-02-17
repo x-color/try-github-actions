@@ -20,7 +20,6 @@ jobs:
       with:
         args: >
           {
-            \"username\": \"Sheep Bot\",
             \"channel\":\"CQSASTL14\",
             \"text\":\"Sheep Say < Hello!!\",
             \"blocks\": [
@@ -28,7 +27,7 @@ jobs:
                 \"type\": \"section\",
                 \"text\": {
                   \"type\": \"mrkdwn\",
-                  \"text\": \":rocket: *You have a new request*\"
+                  \"text\": \":rocket: ${{ GITHUB_REPOSITORY }}\"
                 }
               },
               {
