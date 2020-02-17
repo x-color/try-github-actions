@@ -13,47 +13,10 @@ jobs:
       run: | 
         echo 'execute!!'
 
-    - name: Slack Notification Success
+   - name: Slack Notification Success
+      uses: rtCamp/action-slack-notify@v2.0.0
       env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      uses: pullreminders/slack-action@master
-      with:
-        args: >
-          {
-            \"channel\":\"CQSASTL14\",
-            \"text\":\"Sheep Say < Hello!!\",
-            \"blocks\": [
-              {
-                \"type\": \"section\",
-                \"text\": {
-                  \"type\": \"mrkdwn\",
-                  \"text\": \":rocket: ${{ env.GITHUB_REPOSITORY }}\"
-                }
-              },
-              {
-                \"type\": \"section\",
-                \"fields\": [
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*Type:*\nComputer (laptop)\"
-                  },
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*When:*\nSubmitted Aut 10\"
-                  },
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*Last Update:*\nMar 10, 2015 (3 years, 5 months)\"
-                  },
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*Reason:*\nAll vowel keys aren't working.\"
-                  },
-                  {
-                    \"type\": \"mrkdwn\",
-                    \"text\": \"*Specs:*\nCheetah Pro 15 - Fast, really fast\"
-                  }
-                ]
-              }
-            ]
-          }
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_COLOR: '#5cb85c'
+        SLACK_TITLE: ':rocket: Success Deploy to GitHub Pages'
+        SLACK_MESSAGE: '${{ github.repository }}'
