@@ -18,5 +18,5 @@ jobs:
       env:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         SLACK_COLOR: '#5cb85c'
-        SLACK_TITLE: ':rocket: Success Deploy to GitHub Pages'
-        SLACK_MESSAGE: '${{ github.repository }}'
+        SLACK_TITLE: 'Success to Deploy to GitHub Pages :rocket:'
+        SLACK_MESSAGE: ':closed_book: ${{ github.repository }}'
