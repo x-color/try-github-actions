@@ -27,7 +27,7 @@ jobs:
                 \"type\": \"section\",
                 \"text\": {
                   \"type\": \"mrkdwn\",
-                  \"text\": \":rocket: $GITHUB_REPOSITORY\"
+                  \"text\": \":rocket: "$GITHUB_REPOSITORY"\"
                 }
               },
               {
