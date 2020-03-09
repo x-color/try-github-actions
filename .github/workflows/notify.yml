@@ -10,9 +10,16 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - name: exec
-      run: | 
+      run: |
+        mkdir 11111
+        cd 11111
+        pwd
         echo 'execute!!'
-        exit 1
+
+    - name: exec
+      run: | 
+        pwd
+        echo 'execute!!'
 
 
     - name: Slack Notification Success
