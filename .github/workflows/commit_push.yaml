@@ -26,5 +26,5 @@ jobs:
         run: |
           if [[ `git rev-parse HEAD` != `git rev-parse origin/master` ]]; then
             echo "here!!"
-            git push origin head
+            git push origin master
           fi
