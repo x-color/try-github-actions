@@ -16,14 +16,15 @@ jobs:
       - name: 1st Commit
         run: |
           git add testfile.txt
-          git diff --cached --quiet || git commit -m "Update testfile\n\nUpdated at $(date) by GitHub Actions"
+          git diff --cached --quiet || git commit -m "Update testfile" -m "Updated at $(date) by GitHub Actions"
       - run: echo "$(date)" >> testfile.txt
       - name: 2nd Commit
         run: |
           git add testfile.txt
-          git diff --cached --quiet || git commit -m "Update testfile\n\nUpdated at $(date) by GitHub Actions"
+          git diff --cached --quiet || git commit -m "Update testfile" -m "Updated at $(date) by GitHub Actions"
       - name: Push changes
         run: |
           if [[ `git rev-parse HEAD` == `git rev-parse origin/master` ]]; then
+            echo "here!!"
             git push origin head
           fi
