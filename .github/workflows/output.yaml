@@ -14,3 +14,4 @@ jobs:
           time=$(date)
           echo $time
           echo "::set-output name=time::$time"
+      - run: echo "${{ steps.time.outputs.time }}"
