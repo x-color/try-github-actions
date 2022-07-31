@@ -1,0 +1,16 @@
+name: output
+on: push
+
+jobs:
+  checkout:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: time
+        run: |
+          time=$(date)
+          echo $time
+          echo "::set-output name=time::$time"
