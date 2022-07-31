@@ -10,6 +10,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: time
+        id: time
         run: |
           time=$(date)
           echo $time
